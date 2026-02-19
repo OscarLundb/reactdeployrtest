@@ -5,14 +5,19 @@ import Features from "@/components/Features";
 // This function fetches the data from your API
 async function getDinosaurs() {
   const base = process.env.NEXT_PUBLIC_API_BASE;
-  const res = await fetch(`${base}/api/dinosaurs`, {
-    cache: "no-store",
-    //next: { revalidate: 3600 } // Refresh data every hour
-  });
-  
-  if (!res.ok) throw new Error("Failed to fetch fossils");
+  if (!base) throw new Error("NEXT_PUBLIC_API_BASE is not set");
+
+  const url = `${base}/api/products`;
+  const res = await fetch(url, { cache: "no-store" });
+
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Fetch failed ${res.status} ${res.statusText} from ${url}: ${text}`);
+  }
+
   return res.json();
 }
+
 
 export default async function Home() {
   const dinosaurs = await getDinosaurs();
