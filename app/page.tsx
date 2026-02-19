@@ -43,9 +43,30 @@ export default async function Home() {
         {/* Dynamic Grid */}
         <section className="pb-24">
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {dinosaurs.map((dino: any) => (
-              <ProductCard key={dino._id} product={dino} />
-            ))}
+            {dinosaurs.map((row: any) => {
+              const product = {
+                product_id: row.product_id,
+                product_name: row.product_name,
+                diet: row.diet,
+                dino_type: row.dino_type,
+                image: row.image,
+                description: row.description,
+                region: row.region,
+                height: row.height,
+                length: row.length,
+                weight: row.weight,
+                price: row.price,
+                stock: row.stock,
+              };
+
+              return (
+                <ProductCard
+                  key={product.product_id}
+                  product={row}
+                />
+              );
+            })}
+
           </div>
         </section>
 
