@@ -4,7 +4,7 @@ import Features from "@/components/Features";
 
 // This function fetches the data from your API
 async function getDinosaurs() {
-  const res = await fetch("https://dinoapi.brunosouzadev.com/api/dinosaurs", {
+  const res = await fetch("http://flask-env.eba-muajupmt.eu-north-1.elasticbeanstalk.com/api/productsd", {
     next: { revalidate: 3600 } // Refresh data every hour
   });
   
