@@ -45,24 +45,25 @@ export default async function Home() {
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {dinosaurs.map((row: any) => {
               const product = {
-                product_id: row.product_id,
-                product_name: row.product_name,
+                name: row.product_name,
                 diet: row.diet,
-                dino_type: row.dino_type,
+                type: row.dino_type,       // map dino_type -> type
+                period: "",                // you don't have this in DB (or set something else)
                 image: row.image,
                 description: row.description,
                 region: row.region,
-                height: row.height,
-                length: row.length,
-                weight: row.weight,
-                price: row.price,
-                stock: row.stock,
+                height: String(row.height),
+                length: String(row.length),
+                weight: String(row.weight),
+                price: Number(row.price),
+                stock: Number(row.stock),
               };
+
 
               return (
                 <ProductCard
-                  key={product.product_id}
-                  product={row}
+                  key={row.product_id}
+                  product={product}
                 />
               );
             })}
