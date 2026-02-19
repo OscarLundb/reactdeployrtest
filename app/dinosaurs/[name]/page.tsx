@@ -5,7 +5,7 @@ import Link from "next/link";
 // 1. Fetching the specific dino data
 async function getDinoData(name: string) {
   // We lowercase it here for the URL, but only after we're sure 'name' exists
-  const res = await fetch(`http://flask-env.eba-muajupmt.eu-north-1.elasticbeanstalk.com/api/productsd/${name.toLowerCase()}`, {
+  const res = await fetch(`http://flask-env.eba-muajupmt.eu-north-1.elasticbeanstalk.com/api/products/${name.toLowerCase()}`, {
     next: { revalidate: 3600 } 
   });
   
