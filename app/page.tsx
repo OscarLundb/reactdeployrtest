@@ -4,8 +4,10 @@ import Features from "@/components/Features";
 
 // This function fetches the data from your API
 async function getDinosaurs() {
-  const res = await fetch("https://dinoapi.brunosouzadev.com/api/dinosaurs", {
-    next: { revalidate: 3600 } // Refresh data every hour
+  const base = process.env.NEXT_PUBLIC_API_BASE;
+  const res = await fetch(`${base}/api/dinosaurs`, {
+    cache: "no-store",
+    //next: { revalidate: 3600 } // Refresh data every hour
   });
   
   if (!res.ok) throw new Error("Failed to fetch fossils");
