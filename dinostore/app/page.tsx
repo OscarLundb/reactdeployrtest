@@ -4,7 +4,7 @@ import Features from "@/components/Features"; // Assuming you have this
 
 async function getDinosaurs() {
   try {
-    const response = await fetch('http://flask-env.eba-muajupmt.eu-north-1.elasticbeanstalk.com/products/products', {
+    const response = await fetch('http://127.0.0.1:5000/products/products', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
